@@ -1,40 +1,82 @@
 ﻿//Задайте двумерный массив размером m×n, 
 //заполненный случайными вещественными числами
-using System;
-using static System.Console;
+// using System;
+// using static System.Console;
 
-Clear();
+// Clear();
 
-Write("Введите количество строк массива: ");
-int rows=int.Parse(ReadLine());
+// Write("Введите количество строк массива: ");
+// int rows=int.Parse(ReadLine());
 
-Write("Введите количество столбцов массива: ");
-int columns=int.Parse(ReadLine());
+// Write("Введите количество столбцов массива: ");
+// int columns=int.Parse(ReadLine());
 
-double[,] array = GetArray(rows, columns, 0, 10);
-PrintArray(array);
+// double[,] array = GetArray(rows, columns, 0, 5);
 
-double[,] GetArray(int m, int n, int min, int max)
+// PrintArray(array);
+
+// double[,] GetArray(int m, int n, int min, int max)
+// {
+//     double[,] result = new double[m, n];
+//     for (int i = 0; i < m; i++)
+//     {
+//         for (int j = 0; j < n; j++)
+//         {
+//             result[i, j] = new Random().NextDouble()*(max-min);
+//         }
+//     }
+//     return result;
+// }
+
+// void PrintArray(double[,] inArray)
+// {
+//     for (int i = 0; i < inArray.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < inArray.GetLength(1); j++)
+//         {
+//             Write($"{inArray[i,j]:f1} ");
+//         }
+//         WriteLine();
+//     }
+// }
+
+
+
+int rows = ReadInt("Введите количество строк: ");
+int colums = ReadInt("Введите количество столбцов: ");
+double[,] numbers = new double[rows, colums];
+FillArray2D(numbers);
+PrintArray2D(numbers);
+
+// Заполнение массива рандомными вещественными числами
+void FillArray2D(double[,] array)
 {
-    double[,] result = new double[m, n];
-    for (int i = 0; i < m; i++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            result[i, j] = new Random().NextDouble()*(max-min);
+            array[i, j] = new Random().Next(-99, 99) / 10.0;
         }
     }
-    return result;
 }
 
-void PrintArray(double[,] inArray)
+//  Функция вывода массива в терминал
+void PrintArray2D(double[,] array)
 {
-    for (int i = 0; i < inArray.GetLength(0); i++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < inArray.GetLength(1); j++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            Write($"{inArray[i,j]:f1} ");
+            Console.Write(array[i, j] + " ");
         }
-        WriteLine();
+        Console.WriteLine();
     }
+    Console.WriteLine();
+}
+
+// Функция ввода 
+int ReadInt(string message)
+{
+    Console.Write(message);
+    return Convert.ToInt32(Console.ReadLine());
 }
