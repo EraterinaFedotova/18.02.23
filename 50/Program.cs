@@ -1,4 +1,5 @@
-﻿//Напишите программу, которая на вход принимает значение элемента в двумерном массиве, 
+﻿//Напишите программу, которая на вход принимает значение элемента 
+// в двумерном массиве, 
 //и возвращает информацию о наличии этого элемента в массиве.
 using System;
 using static System.Console;
@@ -7,19 +8,22 @@ Clear();
 
 Write("Введите количество строк массива: ");
 int rows=int.Parse(ReadLine());
+
 Write("Введите количество столбцов массива: ");
 int columns=int.Parse(ReadLine());
+
 int[,] array = GetArray(rows, columns,0,10);
 PrintArray(array);
+
 Write("Введите значение элемента: ");
-int element=int.Parse(ReadLine());
-if(FindElement(array,element))
+int numbers=int.Parse(ReadLine());
+if(SearchNumbers(array,numbers))
 {
-    WriteLine("Элемент найден");
+    WriteLine("Число присутствует в массиве");
 }
 else
 {
-    WriteLine("Элемент не найден");
+    WriteLine("Число отсутствует в массиве");
 }
 
 int[,] GetArray(int m, int n, int min, int max)
@@ -48,7 +52,7 @@ void PrintArray(int[,] inArray)
     }
 }
 
-bool FindElement(int[,] array, int el)
+bool SearchNumbers(int[,] array, int el)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -59,47 +63,3 @@ bool FindElement(int[,] array, int el)
     }
     return false;
 }
-
-
-// int rows = ReadInt("Введите индекс строки: ");
-// int colums = ReadInt("Введите индекс столбца: ");
-// int[,] numbers = new int[6, 8];
-// FillArray2D(numbers);
-// PrintArray2D(numbers);
-
-// if (rows < numbers.GetLength(0) && colums < numbers.GetLength(1)) Console.WriteLine(numbers[rows, colums]);
-// else Console.WriteLine($"{rows}{colums} -> такого числа в массиве нет");
-
-
-// // Заполнение массива рандомными числами от 1 до 9
-// void FillArray2D(int[,] array)
-// {
-//     for (int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < array.GetLength(1); j++)
-//         {
-//             array[i, j] = new Random().Next(1, 10);
-//         }
-//     }
-// }
-
-// //  Функция вывода массива в терминал
-// void PrintArray2D(int[,] array)
-// {
-//     for (int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < array.GetLength(1); j++)
-//         {
-//             Console.Write(array[i, j] + " ");
-//         }
-//         Console.WriteLine();
-//     }
-//     Console.WriteLine();
-// }
-
-// // Функция ввода 
-// int ReadInt(string message)
-// {
-//     Console.Write(message);
-//     return Convert.ToInt32(Console.ReadLine());
-// }
